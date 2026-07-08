@@ -1,10 +1,10 @@
-☐ Leer formato .sm
+☑ Leer formato .sm (básico)
 
-☐ Crear parser
+☑ Crear parser (charts + notes + tests)
 
-☐ Analizar dataset
+☐ Analizar dataset (stats + validación)
 
-☐ Detectar BPM
+☐ Detectar BPM (timeline beat→seconds)
 
 ☐ Crear espectrogramas
 
@@ -17,3 +17,6 @@
 ☐ Entrenar IA
 
 ☐ Exportar .sm
+
+Notas:
+- Ver estado detallado y plan en `docs/STATUS.md`
