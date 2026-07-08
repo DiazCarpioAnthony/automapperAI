@@ -1,12 +1,16 @@
 import re
 
 from app.models.measure import Measure
+from app.parser.note_parser import NoteParser
 from app.parser.chart_header_parser import ChartHeaderParser
 
 
 class MeasureParser:
 
     NOTE_ROW_PATTERN = ChartHeaderParser.NOTE_ROW_PATTERN
+
+    def __init__(self):
+        self.note_parser = NoteParser()
 
     def parse(self, body: str) -> list[Measure]:
         """
@@ -42,7 +46,14 @@ class MeasureParser:
                 current_rows = []
 
         if current_rows:
-            measures.append(Measure(rows=current_rows))
+            measures.append(
+                Measure(
+                    rows=current_rows,
+                    notes_by_row=[
+                        self.note_parser.parse(row) for row in current_rows
+                    ],
+                )
+            )
 
         if not measures:
             raise ValueError("El cuerpo del chart no contiene compases")
@@ -80,4 +91,11 @@ class MeasureParser:
         if not current_rows:
             return
 
-        measures.append(Measure(rows=list(current_rows)))
+        measures.append(
+            Measure(
+                rows=list(current_rows),
+                notes_by_row=[
+                    self.note_parser.parse(row) for row in current_rows
+                ],
+            )
+        )

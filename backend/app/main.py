@@ -1,5 +1,4 @@
 from app.config import SAMPLE_DIR
-from app.parser.note_parser import NoteParser
 from app.parser.sm_parser import SMParser
 
 song_path = SAMPLE_DIR / "Black or White Mondaiji" / "Black or White.sm"
@@ -18,6 +17,11 @@ print()
 
 for index, chart in enumerate(song.charts, start=1):
     total_rows = sum(len(measure.rows) for measure in chart.measures)
+    total_notes = sum(
+        len(notes)
+        for measure in chart.measures
+        for notes in measure.notes_by_row
+    )
 
     print(f"Chart {index}:")
     print(f"  step_type:   {chart.step_type}")
@@ -25,21 +29,19 @@ for index, chart in enumerate(song.charts, start=1):
     print(f"  meter:       {chart.meter}")
     print(f"  measures:    {len(chart.measures)}")
     print(f"  total rows:  {total_rows}")
+    print(f"  total notes: {total_notes}")
     print()
 
-# Commit 4: NoteParser todavía no está en el pipeline.
-# Se prueba aquí sobre filas reales del primer chart.
-note_parser = NoteParser()
-sample_rows = [
-    row
+# Commit 5: notes_by_row ya viene desde el pipeline.
+sample = [
+    (row, notes)
     for measure in song.charts[0].measures
-    for row in measure.rows
+    for row, notes in zip(measure.rows, measure.notes_by_row)
     if row != "0000"
 ][:8]
 
-print("=== NoteParser (commit 4) ===")
-for row in sample_rows:
-    notes = note_parser.parse(row)
+print("=== NotesByRow (commit 5) ===")
+for row, notes in sample:
     rendered = ", ".join(
         f"{note.lane.name}:{note.type.name}" for note in notes
     ) or "(vacío)"
