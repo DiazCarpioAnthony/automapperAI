@@ -11,4 +11,5 @@ class SMParser:
         )
 
         # print(text)
+        
         print(f"Tamaño: {len(text)} caracteres")
