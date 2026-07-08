@@ -10,4 +10,5 @@ class SMParser:
             errors="replace"
         )
 
-        print(text)
+        # print(text)
+        print(f"Tamaño: {len(text)} caracteres")
