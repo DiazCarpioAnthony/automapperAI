@@ -1,64 +1,84 @@
+# ==========================
 # Python
-backend/app/__pycache__/
+# ==========================
 __pycache__/
 *.py[cod]
-*.pyo
-*.pyd
+*$py.class
 
-# Virtual environments
+# Virtual Environment
 .venv/
 venv/
 env/
 
-# VSCode
+# ==========================
+# IDEs
+# ==========================
 .vscode/
-
-# Cursor
+.idea/
 .cursor/
 
-# JetBrains
-.idea/
-
+# ==========================
 # OS
+# ==========================
 .DS_Store
 Thumbs.db
 
+# ==========================
 # Logs
+# ==========================
 logs/
 *.log
 
-# Python cache
+# ==========================
+# Testing
+# ==========================
 .pytest_cache/
+.coverage
+htmlcov/
+
+# ==========================
+# Lint
+# ==========================
 .mypy_cache/
 .ruff_cache/
 
-# Distribution
+# ==========================
+# Build
+# ==========================
 build/
 dist/
 *.egg-info/
 
-# Dataset pesado
+# ==========================
+# Environment
+# ==========================
+.env
+
+# ==========================
+# Dataset generado
+# ==========================
+dataset/features/
+dataset/processed/
+
+# Dataset enorme
 dataset/raw/
 
+# ==========================
 # Modelos entrenados
+# ==========================
 models/checkpoints/
-models/*.pt
 models/*.pth
+models/*.pt
 models/*.ckpt
 models/*.onnx
 
+# ==========================
 # Audio temporal
+# ==========================
 *.wav
 *.flac
 
-# Features generadas
-dataset/features/
-
-# Procesados
-dataset/processed/
-
-# Variables
-.env
-
+# ==========================
 # Jupyter
+# ==========================
 .ipynb_checkpoints/
