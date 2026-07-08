@@ -1,12 +1,8 @@
 from dataclasses import dataclass, field
-from .row import Row
+
+from app.models.note import Note
 
 
 @dataclass
 class Measure:
-    index: int
-    rows: list[Row] = field(default_factory=list)
-
-    @property
-    def subdivisions(self) -> int:
-        return len(self.rows)
+    notes: list[Note] = field(default_factory=list)

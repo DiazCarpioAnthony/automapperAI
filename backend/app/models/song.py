@@ -1,19 +1,15 @@
 from dataclasses import dataclass, field
 
-from .bpm import BPM
-from .chart import Chart
+from app.models.metadata import Metadata
+from app.models.timing import Timing
+from app.models.chart import Chart
 
 
 @dataclass
 class Song:
-    title: str
-    subtitle: str
-    artist: str
 
-    music: str
+    metadata: Metadata
 
-    offset: float
-
-    bpms: list[BPM] = field(default_factory=list)
+    timing: Timing
 
     charts: list[Chart] = field(default_factory=list)
