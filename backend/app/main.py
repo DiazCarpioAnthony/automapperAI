@@ -9,4 +9,4 @@ song = parser.parse(song_path)
 
 print(song)
 print()
-print(song.timing.bpms)
+print(f"Charts encontrados: {len(song.charts)}")
