@@ -1,25 +1,33 @@
 import re
 
+from app.models.chart import Chart
+from app.parser.chart_header_parser import ChartHeaderParser
+from app.parser.measure_parser import MeasureParser
+
 
 class ChartParser:
 
-    def parse(self, text: str) -> list[str]:
-        """
-        Extrae cada bloque #NOTES: completo del archivo .sm.
-        Por ahora devuelve una lista de strings.
-        """
+    def __init__(self):
+        self.header_parser = ChartHeaderParser()
+        self.measure_parser = MeasureParser()
 
+    def parse(self, text: str) -> list[Chart]:
+        charts = []
+
+        for block in self._extract_blocks(text):
+            chart, body = self.header_parser.split(block)
+            chart.measures = self.measure_parser.parse(body)
+            charts.append(chart)
+
+        return charts
+
+    def _extract_blocks(self, text: str) -> list[str]:
         pattern = r"#NOTES:(.*?);"
 
         matches = re.findall(
             pattern,
             text,
-            re.DOTALL
+            re.DOTALL,
         )
 
-        charts = []
-
-        for match in matches:
-            charts.append(match.strip())
-
-        return charts
+        return [match.strip() for match in matches]
