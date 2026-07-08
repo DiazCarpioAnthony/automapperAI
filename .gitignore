@@ -1,0 +1,64 @@
+# Python
+backend/app/__pycache__/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# VSCode
+.vscode/
+
+# Cursor
+.cursor/
+
+# JetBrains
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Distribution
+build/
+dist/
+*.egg-info/
+
+# Dataset pesado
+dataset/raw/
+
+# Modelos entrenados
+models/checkpoints/
+models/*.pt
+models/*.pth
+models/*.ckpt
+models/*.onnx
+
+# Audio temporal
+*.wav
+*.flac
+
+# Features generadas
+dataset/features/
+
+# Procesados
+dataset/processed/
+
+# Variables
+.env
+
+# Jupyter
+.ipynb_checkpoints/
