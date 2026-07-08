@@ -1,8 +1,12 @@
 from app.config import SAMPLE_DIR
 from app.parser.sm_parser import SMParser
 
-song = SAMPLE_DIR / "Black or White Mondaiji" / "Black or White.sm"
+song_path = SAMPLE_DIR / "Black or White Mondaiji" / "Black or White.sm"
 
 parser = SMParser()
 
-parser.parse(song)
+song = parser.parse(song_path)
+
+print(song)
+print()
+print(song.timing.bpms)

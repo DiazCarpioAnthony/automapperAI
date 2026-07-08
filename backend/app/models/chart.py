@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 
-from app.core.enums import Difficulty
 from app.models.measure import Measure
 
 
@@ -8,13 +7,7 @@ from app.models.measure import Measure
 class Chart:
 
     step_type: str = ""
-
-    description: str = ""
-
-    difficulty: Difficulty | None = None
-
-    meter: int = 0
-
-    radar: str = ""
+    difficulty: str = ""
+    level: int = 0
 
     measures: list[Measure] = field(default_factory=list)
