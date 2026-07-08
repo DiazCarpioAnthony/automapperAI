@@ -1,7 +1,13 @@
 from pathlib import Path
 
+from app.parser.metadata_parser import MetadataParser
+
 
 class SMParser:
+
+    def __init__(self):
+
+        self.metadata_parser = MetadataParser()
 
     def parse(self, path):
 
@@ -10,6 +16,6 @@ class SMParser:
             errors="replace"
         )
 
-        # print(text)
-        
-        print(f"Tamaño: {len(text)} caracteres")
+        metadata = self.metadata_parser.parse(text)
+
+        print(metadata)
